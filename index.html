@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="city">
+            TOKYO
+        </h1>
+        <h2>
+            <div class="row">
+                <div class="col-3">
+                    <span class="dayTime">
+
+                    </span>
+                </div>
+                <div class="col-3" id=currentTemperature>
+                    <span class="degrees" id="degrees">
+                        19
+                    </span>
+                    <span class="units">
+                        <a href="#" id="celsius">
+                            <sup>ºC|
+                        </a>
+                        <a href="#" id="fahrenheit">
+                            <sup>ºF
+                        </a>
+                    </span>
+                </div>
+                <div class="col-3">
+                    Weather
+                </div>
+            </div>
+        </h2>
+        <br />
+        <br />
+        <h3>
+            <div class="row">
+                <div class="col-5">
+                    <p> Monday</p>
+                    <p> 36º</p>
+                </div>
+                <div class="col-5">
+                    <p>Tuesday</p>
+                    <p>28º</p>
+                </div>
+                <div class="col-5">
+                    <p>Wednesday</p>
+                    <p>19º</p>
+                </div>
+                <div class="col-5">
+                    <p>Thursday</p>
+                    <p>37º</p>
+                </div>
+                <div class="col-5">
+                    <p>Friday</p>
+                    <p>43º</p>
+                </div>
+            </div>
+            <br />
+        </h3>
+        <h4>
+            Precipitation: 54%
+            <br />
+            Wind: 4KM/H
+        </h4>
+        <p>
+        <form id="search-form">
+            <input type="searchInput" id="citySearch" placeholder="Give me a city and I'll tell you the future" />
+            <button type="button" class="btn btn-dark">Search</button>
+        </form>
+        </p>
+    </div>
+
+    <script src="src/index.js">
+    </script>
+</body>
+
+</html>
