@@ -1,4 +1,3 @@
-let date = document.querySelector(".dayTime");
 let now = new Date();
 let min = now.getMinutes();
 if (min < 10) {
@@ -34,7 +33,7 @@ searchForm.addEventListener("submit", search);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#degrees");
-  degrees.innerHTML = 66;
+  temperatureElement.innerHTML = 66;
 }
 
 function convertToCelsius(event) {
