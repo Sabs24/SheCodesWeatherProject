@@ -23,18 +23,12 @@
                 <div class="col-3" id=currentTemperature>
                     <span class="degrees" id="degrees">
                         19
-                    </span>
-                    <span class="units">
-                        <a href="#" id="celsius">
-                            <sup>ºC|
-                        </a>
-                        <a href="#" id="fahrenheit">
-                            <sup>ºF
+                            <sup>ºC
                         </a>
                     </span>
                 </div>
-                <div class="col-3">
-                    Weather
+                <div class="col-3" id="weather">
+                    Weather Description
                 </div>
             </div>
         </h2>
@@ -70,12 +64,14 @@
             <br />
             Wind: 4KM/H
         </h4>
-        <p>
+        <p2>
         <form id="search-form">
             <input type="searchInput" id="citySearch" placeholder="Give me a city and I'll tell you the future" />
             <button type="button" class="btn btn-dark">Search</button>
+            <button type="button" class="btn btn-success">Current Location</button>
         </form>
-        </p>
+        </p2>
+
     </div>
 
     <script src="index.js">

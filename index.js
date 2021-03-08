@@ -29,20 +29,23 @@ function search(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-//Bonus
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#degrees");
-  temperatureElement.innerHTML = 66;
-}
 
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#degrees");
-  temperatureElement.innerHTML = 19;
-}
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", convertToFahrenheit);
+//when a user searches for a city (example: New York), it should display 
+//the name of the city on the result page and the current temperature of the city.
+let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
+let cityName="Tokyo";
+let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", convertToCelsius);
+
+function showTemperature(response){
+  console.log(response.data);
+  let temperature= Math.round(response.data.main.temp);
+  let temperatureElement=document.querySelector("#degrees");
+  let weatherDescription=document.querySelector("#weather");
+  let description=(response.data.weather[0].description);
+  weatherDescription.innerHTML=`${description}`;
+  temperatureElement.innerHTML= `${temperature}ºC`;
+}
+//Add a Current Location button. When clicking on it, it uses the Geolocation API to get
+// your GPS coordinates and display and the city and current temperature using the OpenWeather API.
+axios.get(apiUrl).then(showTemperature);
