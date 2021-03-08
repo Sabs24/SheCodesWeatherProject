@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Weather Application</title>
+    <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -11,20 +11,30 @@
 <body>
     <div class="container">
         <h1 id="city">
-            CITY
+            TOKYO
         </h1>
         <h2>
             <div class="row">
                 <div class="col-3">
                     <span class="dayTime">
-                        TIME/DATE
+
                     </span>
                 </div>
                 <div class="col-3" id=currentTemperature>
-                    CURRENT TEMPERATURE
+                    <span class="degrees" id="degrees">
+                        19
+                    </span>
+                    <span class="units">
+                        <a href="#" id="celsius">
+                            <sup>ºC|
+                        </a>
+                        <a href="#" id="fahrenheit">
+                            <sup>ºF
+                        </a>
+                    </span>
                 </div>
                 <div class="col-3">
-                    Weather Description
+                    Weather
                 </div>
             </div>
         </h2>
@@ -70,7 +80,7 @@
 
     <script src="index.js">
     </script>
-    <a href="https://github.com/Sabs24/SheCodesWeatherProject"> Open-Source by </a> Atiyyah Sabir
+    <a href="https://github.com/Sabs24/SheCodesWeatherProject">Open-Source by</a> Atiyyah Sabir
 </body>
 
 </html>
