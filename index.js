@@ -49,3 +49,9 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
 search("New York");
+
+function showPosition(position){
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+}
+navigator.geolocation.getCurrentPosition(showPosition);
