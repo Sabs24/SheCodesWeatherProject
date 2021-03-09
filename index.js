@@ -19,26 +19,9 @@ let minutes = now.getMinutes();
 let dateElement = document.querySelector(".dayTime");
 dateElement.innerHTML = `${day} ${hour}:${minutes}`;
 
-//Feature 2
-function search(event) {
-  event.preventDefault();
-  let cityElement = document.querySelector("#city");
-  let citySearch = document.querySelector("#citySearch");
-  cityElement.innerHTML = citySearch.value;
-}
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
-
-
-//when a user searches for a city (example: New York), it should display 
-//the name of the city on the result page and the current temperature of the city.
-let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
-let cityName="Tokyo";
-let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
-
-
 function showTemperature(response){
   console.log(response.data);
+  document.querySelector("#city").innerHTML=response.data.name;
   let temperature= Math.round(response.data.main.temp);
   let temperatureElement=document.querySelector("#degrees");
   let weatherDescription=document.querySelector("#weather");
@@ -46,6 +29,23 @@ function showTemperature(response){
   weatherDescription.innerHTML=`${description}`;
   temperatureElement.innerHTML= `${temperature}ºC`;
 }
-//Add a Current Location button. When clicking on it, it uses the Geolocation API to get
-// your GPS coordinates and display and the city and current temperature using the OpenWeather API.
+
+function search(city){
+let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
+let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+let city=document.querySelector("#citySearch").value;
+search(city);
+}
+//let cityElement = document.querySelector("#city");
+//let citySearch = document.querySelector("#citySearch");
+//cityElement.innerHTML = citySearch.value;
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+search("New York");
