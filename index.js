@@ -22,15 +22,16 @@ dateElement.innerHTML = `${day} ${hour}:${minutes}`;
 function showTemperature(response){
   console.log(response.data);
   document.querySelector("#city").innerHTML=response.data.name;
-  let temperature= Math.round(response.data.main.temp);
-  let temperatureElement=document.querySelector("#degrees");
+  document.querySelector("#degrees").innerHTML=Math.round(response.data.main.temp);
+  //let temperature= Math.round(response.data.main.temp);
+  //let temperatureElement=document.querySelector("#degrees");
   let weatherDescription=document.querySelector("#weather");
   let description=(response.data.weather[0].description);
   weatherDescription.innerHTML=`${description}`;
-  temperatureElement.innerHTML= `${temperature}ºC`;
+  //temperatureElement.innerHTML= `${temperature}ºC`;
 }
 
-function search(city){
+function searchCity(city){
 let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
 let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showTemperature);
@@ -39,19 +40,28 @@ axios.get(apiUrl).then(showTemperature);
 function handleSubmit(event) {
   event.preventDefault();
 let city=document.querySelector("#citySearch").value;
-search(city);
+searchCity(city);
 }
 //let cityElement = document.querySelector("#city");
 //let citySearch = document.querySelector("#citySearch");
 //cityElement.innerHTML = citySearch.value;
 
+
+function showPostion(position){
+  let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
+let apiUrl=`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(showTemperature);
+}
+
+function getCurrentLocation(event){
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-search("New York");
+let currentLocationButton=document.querySelector("#currentLocation");
+currentLocationButton.addEventListener("click", getCurrentLocation);
 
-function showPosition(position){
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-}
-navigator.geolocation.getCurrentPosition(showPosition);
+
+//searchCity("New York");
