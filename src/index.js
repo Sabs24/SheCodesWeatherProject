@@ -22,12 +22,18 @@ dateElement.innerHTML = `${day} ${hour}:${minutes}`;
 function showTemperature(response){
   console.log(response.data);
   document.querySelector("#city").innerHTML=response.data.name;
-  let temperature= Math.round(response.data.main.temp);
+  celsiusTemperature= Math.round(response.data.main.temp);
   let temperatureElement=document.querySelector("#degrees");
   let weatherDescription=document.querySelector("#weather");
   let description=(response.data.weather[0].description);
+  let windSpeed=Math.round(response.data.wind.speed);
+  let windElement=document.querySelector("#windSpeed");
+  let humidity=response.data.main.humidity;
+  let humidityElement=document.querySelector("#humidity");
+  humidityElement.innerHTML=`Humidity: ${humidity}%`;
+  windElement.innerHTML=`Wind: ${windSpeed}KM/H`;
   weatherDescription.innerHTML=`${description}`;
-  temperatureElement.innerHTML= `${temperature}ºC`;
+  temperatureElement.innerHTML= `${celsiusTemperature}`;
 }
 
 function search(city){
@@ -45,13 +51,33 @@ search(city);
 //let citySearch = document.querySelector("#citySearch");
 //cityElement.innerHTML = citySearch.value;
 
+function displayFahrenheitTemperature(event){
+  event.preventDefault();
+  let temperatureElement=document.querySelector("#degrees");
+  let fahrenheitTemperature=(celsiusTemperature*9)/5+32;
+  temperatureElement.innerHTML= fahrenheitTemperature;
+}
+
+function displayCelsiusTemperature(event){
+  event.preventDefault();
+  let temperatureElement=document.querySelector("#degrees");
+  temperatureElement.innerHTML=celsiusTemperature;
+}
+
+let celsiusTemperature=null;
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-search("New York");
+let fahrenheitLink=document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
-function showPosition(position){
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-}
-navigator.geolocation.getCurrentPosition(showPosition);
+let celsiusLink=document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("New York");
+//function showPosition(position){
+  //console.log(position.coords.latitude);
+  //console.log(position.coords.longitude);
+//}
+//navigator.geolocation.getCurrentPosition(showPosition);

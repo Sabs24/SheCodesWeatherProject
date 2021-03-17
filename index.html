@@ -23,14 +23,34 @@
                 <div class="col-3" id=currentTemperature>
                     <span class="degrees" id="degrees">
 
-                        <sup>ºC
-                            </a>
                     </span>
+
+                       <span class="units">
+                           <a href="#" id="celsius-link"> 
+                           ºC
+                        </a>|
+                           <a href="#" id="fahrenheit-link">                      
+                           ºF
+                        </a>
+                       </span>     
+                   
                 </div>
+
                 <div class="col-3" id="weather">
 
                 </div>
-            </div>
+             <br />
+
+                <div id="humidity">
+                    
+                </div>
+
+                    <br />
+
+                    <div id="windSpeed">
+                    
+                    </div>
+                </div>
         </h2>
         <br />
         <br />
@@ -59,24 +79,18 @@
             </div>
             <br />
         </h3>
-        <h4>
-            Precipitation:
-            <br />
-            Wind: KM/H
-        </h4>
-        <p2>
+
             <form id="search-form">
                 <input type="searchInput" id="citySearch" placeholder="Give me a city and I'll tell you the future" />
                 <button type="button" class="btn btn-dark">Search</button>
                 <button type="button" class="btn btn-success">Current Location</button>
             </form>
-        </p2>
-
-    </div>
+       
 
     <script src="src/index.js">
     </script>
     <a href="https://github.com/Sabs24/SheCodesWeatherProject">Open-Source by</a> Atiyyah Sabir
+</div>
 </body>
 
 </html>
