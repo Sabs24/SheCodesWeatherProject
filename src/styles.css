@@ -50,3 +50,6 @@ p {
 .weather {
   text-transform: capitalize;
 }
+.container{
+  border: 1px solid;
+};
