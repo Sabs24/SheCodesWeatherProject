@@ -31,15 +31,26 @@ function showTemperature(response){
   let humidity=response.data.main.humidity;
   let humidityElement=document.querySelector("#humidity");
   humidityElement.innerHTML=`Humidity: ${humidity}%`;
-  windElement.innerHTML=`Wind: ${windSpeed}KM/H`;
+  windElement.innerHTML=`Wind: ${windSpeed} KM/H`;
   weatherDescription.innerHTML=`${description}`;
   temperatureElement.innerHTML= `${celsiusTemperature}`;
+  iconElement.setAttribute("src",
+  `http://openweathermap.org/img/wn/${}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].icon);
+}
+function displayForecast(response){
+  console.log(response.data.list[0]);
+  let forecastElement=document.querySelector("#forecast");
+  forecastElement.innerHTML=`my girl loves to party all the time party all the time`;  
 }
 
 function search(city){
 let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
 let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(showTemperature);
+
+apiUrl=`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -54,12 +65,16 @@ search(city);
 function displayFahrenheitTemperature(event){
   event.preventDefault();
   let temperatureElement=document.querySelector("#degrees");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemperature=(celsiusTemperature*9)/5+32;
-  temperatureElement.innerHTML= fahrenheitTemperature;
+  temperatureElement.innerHTML= Math.round(fahrenheitTemperature);
 }
 
 function displayCelsiusTemperature(event){
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let temperatureElement=document.querySelector("#degrees");
   temperatureElement.innerHTML=celsiusTemperature;
 }
@@ -76,8 +91,9 @@ let celsiusLink=document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("New York");
-//function showPosition(position){
-  //console.log(position.coords.latitude);
-  //console.log(position.coords.longitude);
-//}
-//navigator.geolocation.getCurrentPosition(showPosition);
+function showPosition(position){
+  let lon=position.coords.longitude;
+  let lat=position.coords.latitude;
+  alert(`${lat} ${lon}`);
+}
+navigator.geolocation.getCurrentPosition(showPosition);

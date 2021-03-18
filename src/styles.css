@@ -53,3 +53,8 @@ p {
 .container{
   border: 1px solid;
 };
+.currentTemperature .degrees:hover{
+  cursor:default;
+  color: black;
+  text-decoration: none;
+}
