@@ -100,7 +100,7 @@ function displayForecast(response){
 <h3>
 day ${forecast.main.dt_text}
 </h3>
-<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
+<img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
 <div class="weather-forecast-temperature"> 
 ${Math.round(forecast.main.temp_max)}ºC
 </div>
@@ -108,6 +108,7 @@ ${Math.round(forecast.main.temp_max)}ºC
 `;  
 }
 }
+  
 
 function showPosition(position){
   let lon=position.coords.longitude;
