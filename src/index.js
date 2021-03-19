@@ -40,24 +40,6 @@ function showTemperature(response){
   `https://openweathermap.org/img/wn/${icon}@2x.png`);
 }
 
-function displayForecast(response){
-  let forecastElement=document.querySelector("#forecast");
-  let forecast=response.data.list[0];
-  console.log(forecast);
-  forecastElement.innerHTML=`
-  <div class="col-2">
-                    <p> Monday</p>
-                    <p>
-                    <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" 
-                    alt="rainy" id="icon" class="" />
-                    </p>
-                    <div class="weather-forecast-temperature"> 
-                    ${math.round(forecast.main.temp_max)}
-                    </div>
-                    <p> 36º</p>
-                </div>
-                `;  
-}
 
 function search(city){
 let apiKey="59a85fc8e457f4373fc75df759a2fa3e";
@@ -65,6 +47,7 @@ let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${ap
 axios.get(apiUrl).then(showTemperature);
 
 apiUrl=`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+console.log(apiUrl);
 axios.get(apiUrl).then(displayForecast);
 }
 
@@ -105,10 +88,65 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink=document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("New York");
+function displayForecast(response){
+  let forecastElement=document.querySelector("#forecast");
+  let forecast=response.data.list[0];
+  console.log(forecast);
+  
+  forecastElement.innerHTML=`
+  <div class="col-2">
+<h3>
+day${forecast.main.dt_text}
+</h3>
+<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
+<div class="weather-forecast-temperature"> 
+${Math.round(forecast.main.temp_max)}ºC
+</div>
+</div>
+<div class="col-2">
+<h3>
+day${forecast.main.dt_text}
+</h3>
+<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
+<div class="weather-forecast-temperature"> 
+${Math.round(forecast.main.temp_max)}ºC
+</div>
+</div>
+<div class="col-2">
+<h3>
+day${forecast.main.dt_text}
+</h3>
+<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
+<div class="weather-forecast-temperature"> 
+${Math.round(forecast.main.temp_max)}ºC
+</div>
+</div>
+<div class="col-2">
+<h3>
+day${forecast.main.dt_text}
+</h3>
+<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
+<div class="weather-forecast-temperature"> 
+${Math.round(forecast.main.temp_max)}ºC
+</div>
+<div class="col-2">
+<h3>
+day${forecast.main.dt_text}
+</h3>
+<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
+<div class="weather-forecast-temperature"> 
+${Math.round(forecast.main.temp_max)}ºC
+</div>
+</div>
+</div>
+`;  
+}
+
 function showPosition(position){
   let lon=position.coords.longitude;
   let lat=position.coords.latitude;
   alert(`${lat} ${lon}`);
 }
 navigator.geolocation.getCurrentPosition(showPosition);
+
+search("New York");

@@ -49,9 +49,17 @@ p {
 }
 .container {
   border: 1px solid;
+  margin-top: 30px;
 }
 .currentTemperature .degrees:hover {
   cursor: default;
   color: black;
+  text-align: center;
   text-decoration: none;
+}
+.currentTemperature {
+  text-align: center;
+}
+.dayTime {
+  font-size: 50px;
 }
