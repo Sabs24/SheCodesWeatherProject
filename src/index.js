@@ -90,56 +90,23 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 function displayForecast(response){
   let forecastElement=document.querySelector("#forecast");
-  let forecast=response.data.list[0];
-  console.log(forecast);
-  
-  forecastElement.innerHTML=`
+  forecastElement.innerHTML=null;
+  let forecast=null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast=response.data.list[index];
+    forecastElement.innerHTML+=`
   <div class="col-2">
 <h3>
-day${forecast.main.dt_text}
+day ${forecast.main.dt_text}
 </h3>
 <img src="https://openweathermap.org/img/wn/10d@2x.png"/>
 <div class="weather-forecast-temperature"> 
 ${Math.round(forecast.main.temp_max)}ºC
-</div>
-</div>
-<div class="col-2">
-<h3>
-day${forecast.main.dt_text}
-</h3>
-<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
-<div class="weather-forecast-temperature"> 
-${Math.round(forecast.main.temp_max)}ºC
-</div>
-</div>
-<div class="col-2">
-<h3>
-day${forecast.main.dt_text}
-</h3>
-<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
-<div class="weather-forecast-temperature"> 
-${Math.round(forecast.main.temp_max)}ºC
-</div>
-</div>
-<div class="col-2">
-<h3>
-day${forecast.main.dt_text}
-</h3>
-<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
-<div class="weather-forecast-temperature"> 
-${Math.round(forecast.main.temp_max)}ºC
-</div>
-<div class="col-2">
-<h3>
-day${forecast.main.dt_text}
-</h3>
-<img src="https://openweathermap.org/img/wn/10d@2x.png"/>
-<div class="weather-forecast-temperature"> 
-${Math.round(forecast.main.temp_max)}ºC
-</div>
 </div>
 </div>
 `;  
+}
 }
 
 function showPosition(position){
