@@ -30,18 +30,33 @@ function showTemperature(response){
   let windElement=document.querySelector("#windSpeed");
   let humidity=response.data.main.humidity;
   let humidityElement=document.querySelector("#humidity");
+  let icon=response.data.weather[0].icon;
+  let iconElement=document.querySelector("#icon");
   humidityElement.innerHTML=`Humidity: ${humidity}%`;
   windElement.innerHTML=`Wind: ${windSpeed} KM/H`;
   weatherDescription.innerHTML=`${description}`;
   temperatureElement.innerHTML= `${celsiusTemperature}`;
   iconElement.setAttribute("src",
-  `http://openweathermap.org/img/wn/${}@2x.png`);
-  iconElement.setAttribute("alt", response.data.weather[0].icon);
+  `https://openweathermap.org/img/wn/${icon}@2x.png`);
 }
+
 function displayForecast(response){
-  console.log(response.data.list[0]);
   let forecastElement=document.querySelector("#forecast");
-  forecastElement.innerHTML=`my girl loves to party all the time party all the time`;  
+  let forecast=response.data.list[0];
+  console.log(forecast);
+  forecastElement.innerHTML=`
+  <div class="col-2">
+                    <p> Monday</p>
+                    <p>
+                    <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" 
+                    alt="rainy" id="icon" class="" />
+                    </p>
+                    <div class="weather-forecast-temperature"> 
+                    ${math.round(forecast.main.temp_max)}
+                    </div>
+                    <p> 36º</p>
+                </div>
+                `;  
 }
 
 function search(city){
