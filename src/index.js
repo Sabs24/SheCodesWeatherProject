@@ -1,8 +1,5 @@
 let now = new Date();
 let min = now.getMinutes();
-if (min < 10) {
-  min = `0${min}`;
-}
 let days = [
   "Sunday",
   "Monday",
@@ -19,6 +16,19 @@ let hour = now.getHours();
 let minutes = now.getMinutes();
 let dateElement = document.querySelector(".dayTime");
 dateElement.innerHTML = `${day} ${hour}:${minutes}`;
+
+function formatHours(timestamp){
+  let date= new Date(timestamp);
+  let hours= date.getHours();
+  if( hours<10){
+    hours=`0${hours}`;
+  }
+  if( minutes<10){
+    minutes=`0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 
 function showTemperature(response){
   console.log(response.data);
@@ -50,7 +60,6 @@ let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${ap
 axios.get(apiUrl).then(showTemperature);
 
 apiUrl=`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-console.log(apiUrl);
 axios.get(apiUrl).then(displayForecast);
 }
 
@@ -92,6 +101,7 @@ let celsiusLink=document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 function displayForecast(response){
+  console.log(response.data);
   let forecastElement=document.querySelector("#forecast");
   forecastElement.innerHTML=null;
   let forecast=null;
@@ -101,7 +111,7 @@ function displayForecast(response){
   forecastElement.innerHTML+=`
   <div class="col-2">
 <h3>
-day ${forecast.main.dt_text}
+${formatHours(forecast.dt*1000)}
 </h3>
 <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"/>
 <div class="weather-forecast-temperature"> 
