@@ -13,6 +13,7 @@ let days = [
   "Saturday"
 ];
 
+
 let day = days[now.getDay()];
 let hour = now.getHours();
 let minutes = now.getMinutes();
@@ -30,14 +31,16 @@ function showTemperature(response){
   let windElement=document.querySelector("#windSpeed");
   let humidity=response.data.main.humidity;
   let humidityElement=document.querySelector("#humidity");
-  let icon=response.data.weather[0].icon;
-  let iconElement=document.querySelector("#icon");
+  let iconElement=document.querySelector("#currentIcon");
+  
   humidityElement.innerHTML=`Humidity: ${humidity}%`;
   windElement.innerHTML=`Wind: ${windSpeed} KM/H`;
   weatherDescription.innerHTML=`${description}`;
   temperatureElement.innerHTML= `${celsiusTemperature}`;
   iconElement.setAttribute("src",
-  `https://openweathermap.org/img/wn/${icon}@2x.png`);
+  `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt",
+  response.data.weather[0].description);
 }
 
 
@@ -95,7 +98,7 @@ function displayForecast(response){
 
   for (let index = 0; index < 6; index++) {
     forecast=response.data.list[index];
-    forecastElement.innerHTML+=`
+  forecastElement.innerHTML+=`
   <div class="col-2">
 <h3>
 day ${forecast.main.dt_text}

@@ -1,12 +1,9 @@
-img {
-  inline-size: 15ch;
-  text-align: center;
-}
 body {
   padding-top: 30px;
 }
+
 h1 {
-  font-size: 90px;
+  font-size: 40px;
   padding-top: 10px;
   text-align: center;
   color: blueviolet;
@@ -14,42 +11,53 @@ h1 {
 h2 {
   text-align: center;
 }
-h4 {
-  text-align: center;
+h3 {
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
 }
+
 .currentTemperature {
   font-size: 70px;
+  text-align: center;
 }
 form {
   display: block;
   margin: auto;
-  font-size: 40px;
+  font-size: 20px;
   color: purple;
 }
 .fahrenheit {
-  font-size: 20px;
+  font-size: 10px;
 }
 .celsius {
-  font-size: 20px;
+  font-size: 10px;
 }
 .city {
   text-align: center;
 }
 .degrees {
-  font-size: 80px;
+  font-size: 90px;
+  text-align: center;
 }
 .units {
-  font-size: 25px;
+  font-size: 10px;
+  top: -50px;
+  position: relative;
 }
-p {
-  font-size: 40px;
-}
+
 .weather {
   text-transform: capitalize;
 }
 .container {
   border: 1px solid;
-  margin-top: 30px;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+.weather-forecaster-temperature {
+  text-align: center;
 }
 .currentTemperature .degrees:hover {
   cursor: default;
@@ -57,9 +65,22 @@ p {
   text-align: center;
   text-decoration: none;
 }
-.currentTemperature {
+.dayTime {
+  font-size: 25px;
   text-align: center;
 }
-.dayTime {
-  font-size: 50px;
+div #weather {
+  font-size: 15px;
+}
+div #humidity {
+  font-size: 15px;
+}
+div #windSpeed {
+  font-size: 15px;
+}
+div .weather-forecaster-temperature {
+  text-transform: capitalize;
+}
+img #currentIcon {
+  size: 10ch;
 }

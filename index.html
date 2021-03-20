@@ -4,6 +4,8 @@
 <head>
     <title>Parcel Sandbox</title>
     <meta charset="UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="src/styles.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
@@ -15,13 +17,15 @@
         </h1>
         <h2>
             <div class="row">
-                <div class="col-3">
+                <div>
                     <span class="dayTime">
 
                     </span>
                 </div>
-                <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" alt="rainy" id="icon" class="" />
-                <div class="col-3" id=currentTemperature>
+                
+                <img src="" class="" id="currentIcon"/>
+                
+                <div class="col-14" id=currentTemperature>
     
                     <span class="degrees" id="degrees">
 
@@ -37,7 +41,7 @@
                        </span>     
                 </div>
 
-                <div class="col-3" id="weather">
+                <div  id="weather">
 
                 </div>
              <br />
@@ -99,7 +103,7 @@
                         time
                     </h3>
                     <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" alt="rainy" id="icon" class="" />
-                    <div class="weather-forecaster-temperature">
+                    <div class="" id="weather-forecaster-temperature">
                         temp
                     </div>
                 </div>
@@ -116,8 +120,8 @@
 
     <script src="src/index.js">
     </script>
+    </div>
     <a href="https://github.com/Sabs24/SheCodesWeatherProject">Open-Source by</a> Atiyyah Sabir
-</div>
 </body>
 
 </html>
