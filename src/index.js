@@ -1,5 +1,5 @@
-let now = new Date();
-let min = now.getMinutes();
+function formatDate(timestamp){
+let date = new Date(timestamp);
 let days = [
   "Sunday",
   "Monday",
@@ -10,23 +10,27 @@ let days = [
   "Saturday"
 ];
 
+let day = days[date.getDay()];
+return `${day} ${formatHours(timestamp)}`;
 
-let day = days[now.getDay()];
-let hour = now.getHours();
-let minutes = now.getMinutes();
-let dateElement = document.querySelector(".dayTime");
-dateElement.innerHTML = `${day} ${hour}:${minutes}`;
+}
+
+//let hour = now.getHours();
+//let min = now.getMinutes();
+
+//dateElement.innerHTML = `${day} ${hour}:${min}`;
 
 function formatHours(timestamp){
   let date= new Date(timestamp);
   let hours= date.getHours();
-  if( hours<10){
+  if(hours<10){
     hours=`0${hours}`;
   }
-  if( minutes<10){
-    minutes=`0${minutes}`;
+  let min=date.getMinutes();
+  if( min<10){
+    min=`0${min}`;
   }
-  return `${hours}:${minutes}`;
+  return `${hours}:${min}`;
 }
 
 
@@ -42,7 +46,8 @@ function showTemperature(response){
   let humidity=response.data.main.humidity;
   let humidityElement=document.querySelector("#humidity");
   let iconElement=document.querySelector("#currentIcon");
-  
+  let dateElement = document.querySelector(".dayTime");
+  dateElement.innerHTML=formatDate(response.data.dt*1000);
   humidityElement.innerHTML=`Humidity: ${humidity}%`;
   windElement.innerHTML=`Wind: ${windSpeed} KM/H`;
   weatherDescription.innerHTML=`${description}`;

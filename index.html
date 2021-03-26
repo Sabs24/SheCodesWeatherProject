@@ -16,21 +16,23 @@
 
         </h1>
         <h2>
-            <div class="row">
                 <div>
                     <span class="dayTime">
 
                     </span>
                 </div>
+                </h2>
+        <h3>
+<div class="row" id="current-weather-wrapper">
+    <div class=col-4 id="humidity">
+    </div>
+    <div class=col-4> 
+                <img src="" id="currentIcon" class="float-left"/>
                 
-                <img src="" class="" id="currentIcon"/>
+                <div  id=currentTemperature>
                 
-                <div class="col-14" id=currentTemperature>
-    
-                    <span class="degrees" id="degrees">
-
-                    </span>
-
+            <span class="degrees" id="degrees">
+            </span>
                        <span class="units">
                            <a href="#" id="celsius-link"> 
                            ºC
@@ -38,25 +40,17 @@
                            <a href="#" id="fahrenheit-link">                      
                            ºF
                         </a>
-                       </span>     
+                       </span>  
+                       <div  class=col-4 id="weather">
                 </div>
-
-                <div  id="weather">
-
-                </div>
-             <br />
-
-                <div id="humidity">
-                    
-                </div>
-
-                    <br />
-
-                    <div id="windSpeed">
+    </div>
+</div>
+                
+                    <div class=col-4 id="windSpeed">
                     
                     </div>
-                </div>
-        </h2>
+</div>
+        </h3>
         <br />
         <br />
         
@@ -116,8 +110,6 @@
                 <button type="button" class="btn btn-dark">Search</button>
                 <button type="button" class="btn btn-success">Current Location</button>
             </form>
-       
-
     <script src="src/index.js">
     </script>
     </div>
